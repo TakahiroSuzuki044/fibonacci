@@ -1,13 +1,14 @@
 'use strict';
-
+const memo = new Map();
+memo.set(0,0);
+memo.set(1,1);
 function fibonacci(num) {
-    if (num === 0) {
-        return 0;
-    } else if (num === 1) {
-        return 1;
+    if (memo.has(num)) {
+        return memo.get(num);
     }
-
-    return fibonacci(num - 1) + fibonacci(num - 2);
+    const value = fibonacci(num - 1) + fibonacci(num - 2);
+    memo.set(num,value);
+    return value;
 }
 
 const number = 40;
